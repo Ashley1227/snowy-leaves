@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "snowy_leaves",
+  "version": "${version}",
+  "name": "Snowy Leaves",
+  "description": "Leaves turn white during snow like in bedrock",
+  "authors": [
+    "Ashley"
+  ],
+  "contact": {
+    "homepage": "https://ashley1227.github.io/",
+    "sources": ""
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/snowy_leaves/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.ashley1227.snowyleaves.SnowyLeaves"
+    ]
+  },
+  "mixins": [
+    "snowy_leaves.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.15.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}

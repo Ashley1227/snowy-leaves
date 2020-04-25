@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "snowy=false": { "model": "block/oak_leaves" },
+        "snowy=true": { "model": "snowy_leaves:block/snowy_oak_leaves" }
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.ashley1227.snowyleaves.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "LeavesBlockMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
