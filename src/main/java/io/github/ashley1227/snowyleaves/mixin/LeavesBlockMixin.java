@@ -6,6 +6,7 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -34,22 +35,24 @@ public class LeavesBlockMixin extends Block {
 		info.setReturnValue(true);
 	}
 
-	@Inject(at = @At("TAIL"), method = "Lnet/minecraft/block/LeavesBlock;randomTick(Lnet/minecraft/block/BlockState;Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)V")
-	public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random, CallbackInfo info) {
-		if (world.getBiome(pos).getPrecipitation() == Biome.Precipitation.SNOW && state.get(SNOWY) == false) {
-			if (world.isRaining())
-				world.setBlockState(pos, state.with(SNOWY, true));
-			return;
-		}
-		if (state.get(SNOWY) && !world.getBlockState(pos.add(0, 1, 0)).getBlock().equals(Blocks.SNOW)) {
-			if (world.getBiome(pos).getPrecipitation() == Biome.Precipitation.SNOW && world.isRaining())
+	@Inject(at = @At("TAIL"), method = "Lnet/minecraft/block/LeavesBlock;onRandomTick(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)V")
+	public void randomTick(BlockState state, World world, BlockPos pos, Random random, CallbackInfo info) {
+		if(!world.isClient) {
+			if (world.getBiome(pos).getPrecipitation() == Biome.Precipitation.SNOW && state.get(SNOWY) == false) {
+				if (world.isRaining())
+					world.setBlockState(pos, state.with(SNOWY, true));
 				return;
-			float chance = Math.max(world.getBiome(pos).getTemperature(), 0) + 0.3f;
-			System.out.println(chance);
-			if (world.isRaining())
-				chance *= 3;
-			if (Math.random() < chance)
-				world.setBlockState(pos, state.with(SNOWY, false));
+			}
+			if (state.get(SNOWY) && !world.getBlockState(pos.add(0, 1, 0)).getBlock().equals(Blocks.SNOW)) {
+				if (world.getBiome(pos).getPrecipitation() == Biome.Precipitation.SNOW && world.isRaining())
+					return;
+				float chance = Math.max(world.getBiome(pos).getTemperature(), 0) + 0.3f;
+				System.out.println(chance);
+				if (world.isRaining())
+					chance *= 3;
+				if (Math.random() < chance)
+					world.setBlockState(pos, state.with(SNOWY, false));
+			}
 		}
 	}
 //	@Inject(at = @At("HEAD"), method = "Lnet/minecraft/block/LeavesBlock;getPlacementState(Lnet/minecraft/item/ItemPlacementContext;)Lnet/minecraft/block/BlockState;", cancellable = true)
