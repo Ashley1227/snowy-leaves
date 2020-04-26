@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "terrestria:block/rainbow_eucalyptus_leaves"
+    },
+    "snowy=true": {
+      "model": "snowy_leaves:block/terrestria/snowy_rainbow_eucalyptus_leaves"
+    }
+  }
+}

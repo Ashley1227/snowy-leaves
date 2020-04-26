@@ -52,10 +52,6 @@ public class LeavesBlockMixin extends Block {
 				world.setBlockState(pos, state.with(SNOWY, false));
 		}
 	}
-//	@Inject(at = @At("HEAD"), method = "Lnet/minecraft/block/LeavesBlock;getPlacementState(Lnet/minecraft/item/ItemPlacementContext;)Lnet/minecraft/block/BlockState;", cancellable = true)
-//	public void getPlacementState(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> info) {
-//		BlockState state = ((LeavesBlockAccessor)this).updateDistanceFromLogs((BlockState)this.getDefaultState().with(LeavesBlock.PERSISTENT, true), ctx.getWorld(), ctx.getBlockPos());
-//	}
 
 	@Inject(at = @At("TAIL"), method = "Lnet/minecraft/block/LeavesBlock;appendProperties(Lnet/minecraft/state/StateManager$Builder;)V")
 	public void appendProperties(StateManager.Builder<Block, BlockState> builder, CallbackInfo info) {

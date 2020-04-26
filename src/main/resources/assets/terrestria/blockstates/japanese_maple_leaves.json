@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "terrestria:block/japanese_maple_leaves"
+    },
+    "snowy=true": {
+      "model": "snowy_leaves:block/terrestria/snowy_japanese_maple_leaves"
+    }
+  }
+}

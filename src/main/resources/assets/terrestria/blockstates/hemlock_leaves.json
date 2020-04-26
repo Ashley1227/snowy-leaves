@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "terrestria:block/hemlock_leaves"
+    },
+    "snowy=true": {
+      "model": "snowy_leaves:block/terrestria/snowy_hemlock_leaves"
+    }
+  }
+}

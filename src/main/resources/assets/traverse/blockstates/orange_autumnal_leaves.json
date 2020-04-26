@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "traverse:block/orange_autumnal_leaves"
+    },
+    "snowy=true": {
+      "model": "snowy_leaves:block/traverse/snowy_autumnal_leaves"
+    }
+  }
+}

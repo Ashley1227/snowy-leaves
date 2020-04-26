@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "traverse:block/fir_leaves"
+    },
+    "snowy=true": {
+      "model": "snowy_leaves:block/traverse/snowy_fir_leaves"
+    }
+  }
+}
