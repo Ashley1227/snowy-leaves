@@ -1,5 +1,6 @@
 plugins {
 	id 'fabric-loom' version '0.2.6-SNAPSHOT'
+	id "com.wynprice.cursemaven" version "2.1.1"
 	id 'maven-publish'
 }
 
@@ -14,6 +15,13 @@ repositories {
 	maven {
 		name = 'CurseForge'
 		url = 'https://minecraft.curseforge.com/api/maven'
+	}
+	mavenCentral()
+	maven {
+		url 'https://jitpack.io'
+	}
+	flatDir {
+		dirs "libs"
 	}
 }
 
@@ -30,6 +38,9 @@ dependencies {
 	modImplementation("com.terraformersmc:terrestria:$project.terrestria_version") {
 		exclude group: "curse.maven"
 	}
+
+//	implementation "curse.maven:libgamerule:2888321"
+//	include "curse.maven:libgamerule:2888321"
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
@@ -80,6 +91,5 @@ publishing {
 			}
 		}
 	}
-
 
 }
