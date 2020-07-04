@@ -31,6 +31,9 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
+	// Fabric API. This is technically optional, but you probably want it anyway.
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
 	modImplementation "com.terraformersmc:traverse:$project.traverse_version"
 	modImplementation("com.terraformersmc:terrestria:$project.terrestria_version") {
 		exclude group: "curse.maven"
