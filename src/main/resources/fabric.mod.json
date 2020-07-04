@@ -5,13 +5,13 @@
   "name": "Snowy Leaves",
   "description": "Leaves turn white during snow like in bedrock",
   "authors": [
-    "Ashley"
+    "Ashley1227"
   ],
   "contact": {
     "homepage": "https://ashley1227.github.io/",
     "sources": ""
   },
-  "license": "CC0-1.0",
+  "license": "The Unlicense",
   "icon": "assets/snowy_leaves/icon.png",
   "environment": "*",
   "entrypoints": {
