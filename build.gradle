@@ -1,7 +1,6 @@
 plugins {
-	id 'fabric-loom' version '0.2.6-SNAPSHOT'
+	id "fabric-loom" version "0.4-SNAPSHOT"
 	id "com.wynprice.cursemaven" version "2.1.1"
-	id 'maven-publish'
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -10,20 +9,6 @@ targetCompatibility = JavaVersion.VERSION_1_8
 archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
-
-repositories {
-	maven {
-		name = 'CurseForge'
-		url = 'https://minecraft.curseforge.com/api/maven'
-	}
-	mavenCentral()
-	maven {
-		url 'https://jitpack.io'
-	}
-	flatDir {
-		dirs "libs"
-	}
-}
 
 dependencies {
 	//to change the versions see the gradle.properties file
@@ -35,15 +20,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	modImplementation "com.terraformersmc:traverse:$project.traverse_version"
-	modImplementation("com.terraformersmc:terrestria:$project.terrestria_version") {
-		exclude group: "curse.maven"
-	}
-
-//	implementation "curse.maven:libgamerule:2888321"
-//	include "curse.maven:libgamerule:2888321"
-
-	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
-	// You may need to force-disable transitiveness on them.
+	modImplementation "com.terraformersmc:terrestria:$project.terrestria_version"
 }
 
 processResources {
@@ -76,20 +53,4 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 
 jar {
 	from "LICENSE"
-}
-
-// configure the maven publication
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			// add all the jars that should be included when publishing to maven
-			artifact(remapJar) {
-				builtBy remapJar
-			}
-			artifact(sourcesJar) {
-				builtBy remapSourcesJar
-			}
-		}
-	}
-
 }
